@@ -1,21 +1,23 @@
 import 'employee.dart';
 
 void main(List<String> arguments) {
-  Employee staff1 = Employee("116007", "Usman");
-  Employee staff2 = Employee("116116", "Basir", tahunMasuk: 2016);
-  Employee staff3 = Employee("116221", "Bagas", tahunMasuk: 2020);
+  List<Employee> dataEmployee = [];
+  dataEmployee.add(Pejabat("D33617", 'Umar Ahab', TipeJabatan.direktur));
+  dataEmployee.add(Pejabat("K90112", 'Umar Ahab', TipeJabatan.kabag));
+  dataEmployee[1].tahunMasuk = 2016;
+  dataEmployee.add(StafBiasa("M89182", 'Basith', tahunMasuk: 2020));
 
-  staff1.presensi(DateTime.parse('2023-10-15 09:58:30'));
-  staff2.presensi(DateTime.parse('2023-10-15 08:02:30'));
-  staff3.presensi(DateTime.parse('2023-10-15 08:58:30'));
+  dataEmployee[0].presensi(DateTime.parse('2023-10-15 09:58:30'));
+  dataEmployee[1].presensi(DateTime.parse('2023-10-15 08:02:30'));
+  dataEmployee[2].presensi(DateTime.parse('2023-10-15 09:01:30'));
 
-  staff1.gaji = 500000;
-  staff2.gaji = 4500000;
+  dataEmployee[1].gaji = 500000;
+  dataEmployee[2].gaji = 4500000;
 
-  staff1.address = "Bandung Timur, Jawa Barat Indonesia";
-  staff2.address = "jl. Sukamenak no. 111b Kab. Bandung";
+  dataEmployee[1].address = "Bandung Timur, Jawa Barat Indonesia";
+  dataEmployee[2].address = "jl. Sukamenak no. 111b Kab. Bandung";
 
-  print(staff1.deskripsi());
-  print(staff2.deskripsi());
-  print(staff3.deskripsi());
+  for (var staff in dataEmployee) {
+    print(staff.deskripsi());
+  }
 }
