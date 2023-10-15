@@ -1,4 +1,9 @@
+import 'package:intl/intl.dart';
+
 const umr = 3200000;
+
+var numFormat = NumberFormat("#,000");
+var dateFormat = DateFormat("yyyy-MM-dd");
 
 abstract class Employee {
   //supper class yang memiliki 2 subclass
@@ -20,10 +25,9 @@ abstract class Employee {
     String teks = """======================
     NIP: $nip
     Nama: $name
-    Gaji: $_gaji
-    """;
+    Gaji: ${numFormat.format(gaji)}""";
     if (address != null) {
-      teks += "Alamat: $address";
+      teks += "\n Alamat: $address";
     }
     return teks;
   }
@@ -51,9 +55,9 @@ class StafBiasa extends Employee {
   @override
   void presensi(DateTime jamMasuk) {
     if (jamMasuk.hour > 8) {
-      print("$name Datang terlambat");
+      print("$name pada ${dateFormat.format(jamMasuk)} Datang terlambat");
     } else {
-      print("$name datang tepat waktu");
+      print("$name pada ${dateFormat.format(jamMasuk)} Datang tepat waktu");
     }
   }
 
@@ -71,9 +75,9 @@ class Pejabat extends Employee {
   @override
   void presensi(DateTime jamMasuk) {
     if (jamMasuk.hour > 9) {
-      print("$name Datang terlambat");
+      print("$name pada ${dateFormat.format(jamMasuk)} Datang terlambat");
     } else {
-      print("$name datang tepat waktu");
+      print("$name pada ${dateFormat.format(jamMasuk)} datang tepat waktu");
     }
   }
 

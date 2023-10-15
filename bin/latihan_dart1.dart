@@ -3,7 +3,7 @@ import 'employee.dart';
 void main(List<String> arguments) {
   List<Employee> dataEmployee = [];
   dataEmployee.add(Pejabat("D33617", 'Umar Ahab', TipeJabatan.direktur));
-  dataEmployee.add(Pejabat("K90112", 'Umar Ahab', TipeJabatan.kabag));
+  dataEmployee.add(Pejabat("K90112", 'Zaid Walid', TipeJabatan.kabag));
   dataEmployee[1].tahunMasuk = 2016;
   dataEmployee.add(StafBiasa("M89182", 'Basith', tahunMasuk: 2020));
 
@@ -11,6 +11,7 @@ void main(List<String> arguments) {
   dataEmployee[1].presensi(DateTime.parse('2023-10-15 08:02:30'));
   dataEmployee[2].presensi(DateTime.parse('2023-10-15 09:01:30'));
 
+  dataEmployee[0].gaji = 1500000;
   dataEmployee[1].gaji = 500000;
   dataEmployee[2].gaji = 4500000;
 
