@@ -1,17 +1,18 @@
+// Nilai umr adalah upah minimum regional
 const umr = 3200000;
 
+// Kelas Employee mewakili seorang karyawan.
 class Employee {
-  //variable
-  String nip;
-  String name;
-  String? address;
-  int tahunMasuk;
-  int _gaji = umr;
+  String nip; // Nomor Induk Pegawai (NIP)
+  String name; // Nama karyawan
+  String? address; // Alamat karyawan (opsional)
+  int tahunMasuk; // Tahun masuk karyawan
+  int _gaji = umr; // Gaji awal karyawan, diinisialisasi dengan umr
 
-  //konstraktor dari class Employee
+  // Konstruktor Employee dengan parameter wajib NIP dan nama, serta tahunMasuk opsional
   Employee(this.nip, this.name, {this.tahunMasuk = 2015});
 
-  //method
+  // Metode untuk mencatat kehadiran karyawan berdasarkan waktu masuk
   void presensi(DateTime jamMasuk) {
     if (jamMasuk.hour > 8) {
       print("$name Datang terlambat");
@@ -20,7 +21,7 @@ class Employee {
     }
   }
 
-  //method
+  // Metode untuk mengembalikan deskripsi karyawan dalam bentuk teks
   String deskripsi() {
     String teks = """======================
     NIP: $nip
@@ -33,13 +34,13 @@ class Employee {
     return teks;
   }
 
-  //getter tunjangan
+  // Properti untuk menghitung tunjangan berdasarkan tahun masuk
   int get tunjangan => ((2023 - tahunMasuk) < 5) ? 500000 : 1000000;
 
-  //getter gaji
+  // Properti untuk menghitung gaji total (gaji utama + tunjangan)
   int get gaji => (_gaji + tunjangan);
 
-  //setter
+  // Setter untuk mengatur gaji karyawan dengan validasi
   set gaji(int gaji) {
     if (gaji < umr) {
       _gaji = umr;
